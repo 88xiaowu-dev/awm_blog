@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Informasi & Prediksi</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            
+            /* Background Gambar dengan Overlay Gelap */
+            background: linear-gradient(rgba(18, 18, 18, 0.3), rgba(255, 39, 1, 0.3)), 
+                        url('https://github.com/88xiaowu-dev/awm/blob/main/Bg_awm.png?raw=true') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Header / Banner */
+        header {
+            background: linear-gradient(rgba(18, 18, 18, 0.5), rgba(255, 39, 1, 0.5));
+            backdrop-filter: none;
+            padding: 5px 10px;
+            text-align: center;
+            border-bottom: 3px solid #ff0000;
+        }
+
+        /* Container untuk Logo & Gambar Nama Situs */
+        .brand-container {
+            display: flex;
+            flex-direction: row;        /* Menyusun item dari kiri ke kanan */
+            align-items: left;        /* Menyelaraskan posisi vertikal agar pas di tengah */
+            justify-content: left;    /* Mengatur posisi horizontal di tengah header */
+            gap: 2px;                  /* Jarak antara logo dan gambar nama situs */
+        }
+
+        /* Pengaturan Ukuran Logo */
+        .site-logo {
+            width: 50px;   /* Ukuran lebar logo (bisa disesuaikan) */
+            height: auto;  /* Menjaga proporsi gambar */
+            object-fit: contain;
+        }
+
+        /* Pengaturan Ukuran Gambar Nama Situs */
+        .site-title-img {
+            max-width: 200px; /* Batas lebar maksimal gambar nama situs */
+            height: auto;     /* Menjaga proporsi gambar */
+            object-fit: contain;
+        }
+
+        /* Container Utama Menu */
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 0 15px;
+            width: 100%;
+        }
+
+        /* Grid untuk 8 Tombol Menu */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 Kolom untuk HP */
+            gap: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .menu-grid {
+                grid-template-columns: repeat(4, 1fr); /* 4 Kolom untuk Laptop/PC */
+            }
+        }
+
+        /* Desain Tombol Menu (Efek Kaca Transparan) */
+        .menu-item {
+            background: rgba(30, 30, 30, 0.5);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgb(254, 0, 72);
+            border-radius: 12px;
+            padding: 20px 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px 0 rgba(254, 2, 2, 0.37);
+        }
+    
+
+        .menu-item:hover {
+            background: rgba(254, 0, 72, 0.5);
+            color: #f9d805;
+            transform: translateY(-5px);
+            border-color: #f9d805;
+            border: 2px solid rgb(248, 2, 2, 0,5);
+            box-shadow: 0 12px 20px rgba(255, 0, 0, 0.3);
+        }
+
+        /* Icon / Emoji di dalam Tombol */
+        .menu-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Teks Tombol */
+        .menu-title {
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #faf9f9;
+            background: linear-gradient(rgba(18, 18, 18, 0.5), rgba(255, 39, 1, 0.5));
+            backdrop-filter: none;
+            border-top: 3px solid #ff0000;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-container">
+            <!-- 1. Gambar Logo Utama -->
+            <img src="https://github.com/88xiaowu-dev/awm/blob/main/Logo_awm.png?raw=true" alt="Logo Situs" class="site-logo">
+            
+            <!-- 2. Gambar Nama Situs (Teks Logo) -->
+            <img src="https://github.com/88xiaowu-dev/awm/blob/main/Awm.png?raw=true" alt="Nama Situs" class="site-title-img">
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="menu-grid">
+            <!-- 1. Promosi -->
+            <a href="promosi.html" class="menu-item">
+                <span class="menu-icon">🎁</span>
+                <span class="menu-title">Promosi</span>
+            </a>
+
+            <!-- 2. RTP -->
+            <a href="rtp.html" class="menu-item">
+                <span class="menu-icon">📊</span>
+                <span class="menu-title">RTP</span>
+            </a>
+
+            <!-- 3. Prediksi Togel -->
+            <a href="prediksi-togel.html" class="menu-item">
+                <span class="menu-icon">🔢</span>
+                <span class="menu-title">Prediksi Togel</span>
+            </a>
+
+            <!-- 4. Prediksi Bola -->
+            <a href="prediksi-bola.html" class="menu-item">
+                <span class="menu-icon">⚽</span>
+                <span class="menu-title">Prediksi Bola</span>
+            </a>
+
+            <!-- 5. Jadwal Bank -->
+            <a href="jadwal-bank.html" class="menu-item">
+                <span class="menu-icon">🏦</span>
+                <span class="menu-title">Jadwal Bank</span>
+            </a>
+
+            <!-- 6. Jadwal Pasaran Togel -->
+            <a href="jadwal-pasaran.html" class="menu-item">
+                <span class="menu-icon">⏰</span>
+                <span class="menu-title">Jadwal Pasaran Togel</span>
+            </a>
+
+            <!-- 7. Bukti JP -->
+            <a href="bukti-jp.html" class="menu-item">
+                <span class="menu-icon">🏆</span>
+                <span class="menu-title">Bukti JP</span>
+            </a>
+
+            <!-- 8. Cara Bermain -->
+            <a href="cara-bermain.html" class="menu-item">
+                <span class="menu-icon">📖</span>
+                <span class="menu-title">Cara Bermain</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2006 Nama Situs Anda. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
