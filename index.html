@@ -1,199 +1,859 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Informasi & Prediksi</title>
+
+    <title>AWM - Portal Informasi</title>
+
     <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
         * {
             box-sizing: border-box;
         }
+
+        html,
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            min-height: 100%;
+        }
+
+
+        /* =========================================
+           BODY / BACKGROUND
+        ========================================= */
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
             color: #ffffff;
-            
-            /* Background Gambar dengan Overlay Gelap */
-            background: linear-gradient(rgba(18, 18, 18, 0.3), rgba(255, 39, 1, 0.3)), 
-                        url('https://github.com/88xiaowu-dev/awm/blob/main/Bg_awm.png?raw=true') no-repeat center center fixed;
+
+            background:
+                linear-gradient(
+                    rgba(0, 5, 25, 0.72),
+                    rgba(0, 12, 35, 0.25)
+                ),
+                url("https://raw.githubusercontent.com/88xiaowu-dev/awm/main/Bg_awm.png")
+                no-repeat center center fixed;
+
             background-size: cover;
+
             min-height: 100vh;
+
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+
+            overflow-x: hidden;
         }
 
-        /* Header / Banner */
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
         header {
-            background: linear-gradient(rgba(18, 18, 18, 0.5), rgba(255, 39, 1, 0.5));
-            backdrop-filter: none;
-            padding: 5px 10px;
+            padding: 30px 15px 0;
+
             text-align: center;
-            border-bottom: 3px solid #ff0000;
         }
 
-        /* Container untuk Logo & Gambar Nama Situs */
+
         .brand-container {
             display: flex;
-            flex-direction: row;        /* Menyusun item dari kiri ke kanan */
-            align-items: left;        /* Menyelaraskan posisi vertikal agar pas di tengah */
-            justify-content: left;    /* Mengatur posisi horizontal di tengah header */
-            gap: 2px;                  /* Jarak antara logo dan gambar nama situs */
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
         }
 
-        /* Pengaturan Ukuran Logo */
+
+        /* =========================================
+           LOGO
+        ========================================= */
+
         .site-logo {
-            width: 50px;   /* Ukuran lebar logo (bisa disesuaikan) */
-            height: auto;  /* Menjaga proporsi gambar */
+            width: 100px;
+
+            height: 100px;
+
             object-fit: contain;
+
+            display: block;
+
+            border-radius: 22px;
         }
 
-        /* Pengaturan Ukuran Gambar Nama Situs */
-        .site-title-img {
-            max-width: 200px; /* Batas lebar maksimal gambar nama situs */
-            height: auto;     /* Menjaga proporsi gambar */
-            object-fit: contain;
-        }
 
-        /* Container Utama Menu */
-        .container {
-            max-width: 600px;
-            margin: 30px auto;
-            padding: 0 15px;
+        /* =========================================
+           NAMA WEBSITE
+        ========================================= */
+
+        .site-name-bar {
             width: 100%;
+
+            max-width: 600px;
+
+            margin: 28px auto 0;
+
+            padding: 11px 15px;
+
+            background:
+                rgba(252, 52, 2, 0.216);
+
+            border:
+                2px solid
+                rgba(253, 3, 3, 1);
+
+            border-radius: 10px;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            text-align: center;
+
+            box-shadow:
+                0 2px 8px
+                rgba(255, 253, 253, 1);
         }
 
-        /* Grid untuk 8 Tombol Menu */
+
+        /* =========================================
+           CONTAINER
+        ========================================= */
+
+        .container {
+            width: 100%;
+
+            max-width: 630px;
+
+            margin: 32px auto;
+
+            padding: 0 15px;
+
+            flex: 1;
+        }
+
+
+        /* =========================================
+           MENU VERTIKAL
+        ========================================= */
+
         .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 Kolom untuk HP */
-            gap: 15px;
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
         }
 
-        @media (min-width: 768px) {
-            .menu-grid {
-                grid-template-columns: repeat(4, 1fr); /* 4 Kolom untuk Laptop/PC */
+
+        /* =========================================
+           WRAPPER MENU
+
+           Wrapper menangani efek goyang.
+           Tombol menu menangani efek zoom.
+        ========================================= */
+
+        .menu-wrapper {
+            width: 100%;
+
+            position: relative;
+
+            transform-origin: center center;
+
+            animation:
+                goyang
+                2.8s
+                ease-in-out
+                infinite;
+        }
+
+
+        /* =========================================
+           TOMBOL MENU
+        ========================================= */
+
+        .menu-item {
+            width: 100%;
+
+            min-height: 70px;
+
+            display: grid;
+
+            grid-template-columns:
+                70px
+                1fr
+                45px;
+
+            align-items: center;
+
+            padding: 8px 12px;
+
+            background:
+                rgba(252, 52, 2, 0.1);
+
+            border:
+                2px solid
+                rgb(91, 2, 2);
+
+            border-radius: 11px;
+
+            text-decoration: none;
+
+            color: #ffffff;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 2px 8px
+                rgba(253, 3, 3, 1);
+
+            transform:
+                scale(1);
+
+            transform-origin:
+                center center;
+
+            transition:
+                transform 0.30s ease,
+                background 0.30s ease,
+                box-shadow 0.30s ease,
+                border-color 0.30s ease;
+        }
+
+
+        /* =========================================
+           ANIMASI GOYANG
+        ========================================= */
+
+        @keyframes goyang {
+
+            0%,
+            100% {
+                transform:
+                    rotate(0deg);
+            }
+
+            20% {
+                transform:
+                    rotate(-0.8deg);
+            }
+
+            40% {
+                transform:
+                    rotate(0.8deg);
+            }
+
+            60% {
+                transform:
+                    rotate(-0.6deg);
+            }
+
+            80% {
+                transform:
+                    rotate(0.6deg);
             }
         }
 
-        /* Desain Tombol Menu (Efek Kaca Transparan) */
-        .menu-item {
-            background: rgba(30, 30, 30, 0.5);
-            backdrop-filter: blur(2px);
-            border: 1px solid rgb(254, 0, 72);
-            border-radius: 12px;
-            padding: 20px 10px;
-            text-align: center;
-            text-decoration: none;
-            color: #ffffff;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 32px 0 rgba(254, 2, 2, 0.37);
-        }
-    
 
-        .menu-item:hover {
-            background: rgba(254, 0, 72, 0.5);
-            color: #f9d805;
-            transform: translateY(-5px);
-            border-color: #f9d805;
-            border: 2px solid rgb(248, 2, 2, 0,5);
-            box-shadow: 0 12px 20px rgba(255, 0, 0, 0.3);
+        /* =========================================
+           DELAY BERBEDA
+
+           Supaya tombol tidak bergoyang
+           tepat secara bersamaan.
+        ========================================= */
+
+        .menu-wrapper:nth-child(1) {
+            animation-delay: 0s;
         }
 
-        /* Icon / Emoji di dalam Tombol */
+        .menu-wrapper:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .menu-wrapper:nth-child(3) {
+            animation-delay: 0.30s;
+        }
+
+        .menu-wrapper:nth-child(4) {
+            animation-delay: 0.45s;
+        }
+
+        .menu-wrapper:nth-child(5) {
+            animation-delay: 0.60s;
+        }
+
+        .menu-wrapper:nth-child(6) {
+            animation-delay: 0.75s;
+        }
+
+        .menu-wrapper:nth-child(7) {
+            animation-delay: 0.90s;
+        }
+
+        .menu-wrapper:nth-child(8) {
+            animation-delay: 1.05s;
+        }
+
+
+        /* =========================================
+           HOVER / ZOOM SELURUH MENU
+        ========================================= */
+
+        @media (hover: hover) and (pointer: fine) {
+
+            /*
+               Saat kursor masuk ke area menu,
+               animasi goyang berhenti sementara.
+            */
+
+            .menu-wrapper:hover {
+                animation-play-state:
+                    paused;
+
+                z-index: 20;
+            }
+
+
+            /*
+               Seluruh kotak menu membesar:
+               background,
+               border,
+               icon,
+               tulisan,
+               dan share icon.
+            */
+
+            .menu-wrapper:hover .menu-item {
+                transform:
+                    translateY(-3px)
+                    scale(1.07);
+
+                background:
+                    rgb(227, 54, 6);
+
+                border-color:
+                    rgb(246, 206, 5);
+
+                box-shadow:
+                    0 7px 10px
+                    rgba(251, 250, 249, 0.5);
+            }
+        }
+
+
+        /* =========================================
+           ICON KIRI
+        ========================================= */
+
         .menu-icon {
-            font-size: 28px;
-            margin-bottom: 10px;
+            width: 55px;
+
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 27px;
+
+            border-radius: 8px;
+
+            background:
+                rgba(251, 2, 2, 0.3);
+
+            overflow: hidden;
+        }
+
+
+        /* =========================================
+           JIKA ICON MENGGUNAKAN GAMBAR
+        ========================================= */
+
+        .menu-icon img {
+            width: 100%;
+
+            height: 100%;
+
             display: block;
+
+            object-fit: cover;
+
+            border-radius: 8px;
         }
 
-        /* Teks Tombol */
+
+        /* =========================================
+           TEKS MENU
+        ========================================= */
+
         .menu-title {
-            font-size: 13px;
-            font-weight: bold;
+            min-width: 0;
+
+            padding: 0 8px;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            text-align: center;
+
             text-transform: uppercase;
+
+            line-height: 1.3;
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 12px;
-            color: #faf9f9;
-            background: linear-gradient(rgba(18, 18, 18, 0.5), rgba(255, 39, 1, 0.5));
-            backdrop-filter: none;
-            border-top: 3px solid #ff0000;
+
+        /* =========================================
+           ICON SHARE
+        ========================================= */
+
+        .share-icon {
+            width: 35px;
+
+            height: 35px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 24px;
+
+            color: #ffffff;
         }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            width: 100%;
+
+            padding: 18px;
+
+            text-align: center;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            color:
+                rgba(255, 255, 255, 0.85);
+
+            background:
+                rgba(246, 4, 4, 0.2);
+
+            border-top:
+                1px solid
+                rgb(246, 4, 4);
+        }
+
+
+        /* =========================================
+           RESPONSIVE HP
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding-top: 22px;
+            }
+
+            .site-logo {
+                width: 85px;
+
+                height: 85px;
+            }
+
+            .site-name-bar {
+                margin-top: 22px;
+
+                font-size: 18px;
+            }
+
+            .container {
+                margin-top: 26px;
+
+                padding: 0 12px;
+            }
+
+            .menu-grid {
+                gap: 14px;
+            }
+
+            .menu-item {
+                min-height: 66px;
+
+                grid-template-columns:
+                    60px
+                    1fr
+                    40px;
+
+                padding:
+                    7px
+                    10px;
+            }
+
+            .menu-icon {
+                width: 50px;
+
+                height: 50px;
+
+                font-size: 24px;
+            }
+
+            .menu-title {
+                font-size: 15px;
+            }
+
+            .share-icon {
+                font-size: 21px;
+            }
+        }
+
+
+        /* =========================================
+           HP SANGAT KECIL
+        ========================================= */
+
+        @media (max-width: 380px) {
+
+            .menu-title {
+                font-size: 13px;
+            }
+
+            .menu-item {
+                grid-template-columns:
+                    55px
+                    1fr
+                    35px;
+            }
+
+            .menu-icon {
+                width: 46px;
+
+                height: 46px;
+            }
+        }
+
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .menu-wrapper {
+                animation: none;
+            }
+
+            .menu-item {
+                transition: none;
+            }
+        }
+
     </style>
+
 </head>
+
+
 <body>
 
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
     <header>
+
         <div class="brand-container">
-            <!-- 1. Gambar Logo Utama -->
-            <img src="https://github.com/88xiaowu-dev/awm/blob/main/Logo_awm.png?raw=true" alt="Logo Situs" class="site-logo">
-            
-            <!-- 2. Gambar Nama Situs (Teks Logo) -->
-            <img src="https://github.com/88xiaowu-dev/awm/blob/main/Awm.png?raw=true" alt="Nama Situs" class="site-title-img">
+
+            <img
+                src="https://raw.githubusercontent.com/88xiaowu-dev/awm/main/Logo_awm.png"
+                alt="Logo AWM"
+                class="site-logo"
+            >
+
         </div>
+
+
+        <div class="site-name-bar">
+            AWM
+        </div>
+
     </header>
 
-    <div class="container">
+
+
+    <!-- =========================================
+         MENU
+    ========================================== -->
+
+    <main class="container">
+
         <div class="menu-grid">
-            <!-- 1. Promosi -->
-            <a href="promosi.html" class="menu-item">
-                <span class="menu-icon">🎁</span>
-                <span class="menu-title">Promosi</span>
-            </a>
 
-            <!-- 2. RTP -->
-            <a href="rtp.html" class="menu-item">
-                <span class="menu-icon">📊</span>
-                <span class="menu-title">RTP</span>
-            </a>
 
-            <!-- 3. Prediksi Togel -->
-            <a href="prediksi-togel.html" class="menu-item">
-                <span class="menu-icon">🔢</span>
-                <span class="menu-title">Prediksi Togel</span>
-            </a>
+            <!-- =================================
+                 1. PROMOSI
+            ================================== -->
 
-            <!-- 4. Prediksi Bola -->
-            <a href="prediksi-bola.html" class="menu-item">
-                <span class="menu-icon">⚽</span>
-                <span class="menu-title">Prediksi Bola</span>
-            </a>
+            <div class="menu-wrapper">
 
-            <!-- 5. Jadwal Bank -->
-            <a href="jadwal-bank.html" class="menu-item">
-                <span class="menu-icon">🏦</span>
-                <span class="menu-title">Jadwal Bank</span>
-            </a>
+                <a
+                    href="promosi.html"
+                    class="menu-item"
+                >
 
-            <!-- 6. Jadwal Pasaran Togel -->
-            <a href="jadwal-pasaran.html" class="menu-item">
-                <span class="menu-icon">⏰</span>
-                <span class="menu-title">Jadwal Pasaran Togel</span>
-            </a>
+                    <span class="menu-icon">
+                        🎁
+                    </span>
 
-            <!-- 7. Bukti JP -->
-            <a href="bukti-jp.html" class="menu-item">
-                <span class="menu-icon">🏆</span>
-                <span class="menu-title">Bukti JP</span>
-            </a>
+                    <span class="menu-title">
+                        👉 Promosi
+                    </span>
 
-            <!-- 8. Cara Bermain -->
-            <a href="cara-bermain.html" class="menu-item">
-                <span class="menu-icon">📖</span>
-                <span class="menu-title">Cara Bermain</span>
-            </a>
+                    <span class="share-icon">
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =================================
+                 2. RTP
+            ================================== -->
+
+            <div class="menu-wrapper">
+
+                <a
+                    href="rtp.html"
+                    class="menu-item"
+                >
+
+                    <span class="menu-icon">
+                        📊
+                    </span>
+
+                    <span class="menu-title">
+                        👉 RTP
+                    </span>
+
+                    <span class="share-icon">
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =================================
+                 3. PREDIKSI TOGEL
+            ================================== -->
+
+            <div class="menu-wrapper">
+
+                <a
+                    href="prediksi-togel.html"
+                    class="menu-item"
+                >
+
+                    <span class="menu-icon">
+                        🔢
+                    </span>
+
+                    <span class="menu-title">
+                        🔗 Prediksi Togel
+                    </span>
+
+                    <span class="share-icon">
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =================================
+                 4. PREDIKSI BOLA
+            ================================== -->
+
+            <div class="menu-wrapper">
+
+                <a
+                    href="prediksi-bola.html"
+                    class="menu-item"
+                >
+
+                    <span class="menu-icon">
+                        ⚽
+                    </span>
+
+                    <span class="menu-title">
+                        🔗 Prediksi Bola
+                    </span>
+
+                    <span class="share-icon">
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =================================
+                 5. JADWAL BANK
+            ================================== -->
+
+            <div class="menu-wrapper">
+
+                <a
+                    href="jadwal-bank.html"
+                    class="menu-item"
+                >
+
+                    <span class="menu-icon">
+                        🏦
+                    </span>
+
+                    <span class="menu-title">
+                        👉 Jadwal Bank
+                    </span>
+
+                    <span class="share-icon">
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =================================
+                 6. JADWAL PASARAN TOGEL
+            ================================== -->
+
+            <div class="menu-wrapper">
+
+                <a
+                    href="jadwal-pasaran.html"
+                    class="menu-item"
+                >
+
+                    <span class="menu-icon">
+                        ⏰
+                    </span>
+
+                    <span class="menu-title">
+                        👉 Jadwal Pasaran Togel
+                    </span>
+
+                    <span class="share-icon">
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =================================
+                 7. BUKTI JP
+            ================================== -->
+
+            <div class="menu-wrapper">
+
+                <a
+                    href="bukti-jp.html"
+                    class="menu-item"
+                >
+
+                    <span class="menu-icon">
+                        🏆
+                    </span>
+
+                    <span class="menu-title">
+                        👉 Bukti JP
+                    </span>
+
+                    <span class="share-icon">
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =================================
+                 8. CARA BERMAIN
+            ================================== -->
+
+            <div class="menu-wrapper">
+
+                <a
+                    href="cara-bermain.html"
+                    class="menu-item"
+                >
+
+                    <span class="menu-icon">
+                        📖
+                    </span>
+
+                    <span class="menu-title">
+                        👉 Cara Bermain
+                    </span>
+
+                    <span class="share-icon">
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+
         </div>
-    </div>
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
 
     <footer>
-        &copy; 2006 Nama Situs Anda. All Rights Reserved.
+        &copy; 2026 AWM. All Rights Reserved.
     </footer>
 
+
 </body>
+
 </html>
